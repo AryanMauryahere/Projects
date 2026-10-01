@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<title>Turbo Racer</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="stage">
+  <canvas id="game" width="960" height="540"></canvas>
+
+  <div id="menu" class="overlay">
+    <h1>TURBO RACER</h1>
+    <p class="sub">3 laps · beat the pack · top the leaderboard</p>
+    <input id="nameIn" maxlength="16" placeholder="Driver name" autocomplete="off">
+    <button id="startBtn" class="big">START RACE</button>
+    <p class="keys">← → steer · ↑ gas · ↓ brake · SHIFT nitro · C camera · P pause</p>
+    <h3>Leaderboard</h3>
+    <ol id="board0" class="board"></ol>
+  </div>
+
+  <div id="pauseBox" class="overlay hidden">
+    <h1>PAUSED</h1>
+    <button id="resumeBtn" class="big">RESUME</button>
+    <button id="quitBtn">QUIT TO MENU</button>
+  </div>
+
+  <div id="end" class="overlay hidden">
+    <h1 id="endTitle">FINISH!</h1>
+    <p class="sub" id="endInfo"></p>
+    <div id="submitRow">
+      <input id="nameOut" maxlength="16" placeholder="Driver name" autocomplete="off">
+      <button id="submitBtn" class="big">SUBMIT TIME</button>
+    </div>
+    <ol id="board1" class="board"></ol>
+    <button id="againBtn">RACE AGAIN</button>
+  </div>
+</div>
+<script src="game.js"></script>
+</body>
+</html>
