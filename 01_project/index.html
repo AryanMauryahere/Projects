@@ -9,51 +9,98 @@
     <h1>Rock Paper Scissors</h1>
     <button onclick="
     
-    if (computerChoice = 'paper') {
-      // document.getElementById('score').textContent = 'Score: ' + score - 1;
-      console.log('Score: ' + score - 1);
+  playGame();
+  if (computerChoice === 'paper') {
+    score = score - 1;
+    document.getElementById('score-text').textContent = 'Score: ' + score;
+    console.log('Score: ' + score);
+  }
+  
+  else if (computerChoice === 'Rock') {
+    score = score + 0;
+    document.getElementById('score-text').textContent = 'Score: ' + score;
+    console.log('Score: ' + score);
+  }
+  
+  else {
+    score = score + 1;
+    document.getElementById('score-text').textContent = 'Score: ' + score;
+    console.log('Score: ' + score);
+  }
+    
+  ">
+      Rock
+    </button>
+    <button
+    onclick="
+    playGame();
+    if (computerChoice === 'paper') {
+      score = score + 0;
+      document.getElementById('score-text').textContent = 'Score: ' + score;
+      console.log('Score: ' + score);
     }
     
-    else if (computerChoice = 'Rock') {
-      // document.getElementById('score').textContent = 'Score: ' + score + 0;
-      console.log('Score: ' + score + 0);
+    else if (computerChoice === 'Rock') {
+      score = score + 1;
+      document.getElementById('score-text').textContent = 'Score: ' + score;
+      console.log('Score: ' + score);
     }
     
     else {
-      // document.getElementById('score').textContent = 'Score: ' + score + 1;
-      console.log('Score: ' + score + 1);
+      score = score - 1;
+      document.getElementById('score-text').textContent = 'Score: ' + score;
+      console.log('Score: ' + score);
     }
-
     ">
-      Rock
-    </button>
-    <button>
       Paper
     </button>
-    <button>
+    <button 
+    onclick="
+
+      playGame();           
+      if (computerChoice === 'paper') {
+        score = score + 1;
+        document.getElementById('score-text').textContent = 'Score: ' + score;
+        console.log('Score: ' + score);
+      }
+      
+      else if (computerChoice === 'Rock') {
+        score = score - 1;
+        document.getElementById('score-text').textContent = 'Score: ' + score;
+        console.log('Score: ' + score);
+      }
+      
+      else {
+        score = score + 0;
+        document.getElementById('score-text').textContent = 'Score: ' + score;
+        console.log('Score: ' + score);
+      }
+      ">
       Scissors
     </button>
     
-    <!-- <p id="score">
+    <p id="score-text">
+      
+    </p>
     
-    </p> -->
-
     <script>
 
       let computerChoice = " ";
-      const randomNumber = Math.random();
       let score = 0;
-
+      
+      function playGame() {
+      const randomNumber = Math.random();
+      
       if (randomNumber < 0.33) {
         computerChoice = 'Rock';
       }
-      else if (0.33 < randomNumber < 0.66) {
-        computerChoice = 'Paper'
+      else if (randomNumber < 0.66) {
+        computerChoice = 'paper'
       }
       else {
-        computerChoice = 'Scossors'
+        computerChoice = 'scissors'
       }
-
+    }
 
       console.log(score)
     </script>
