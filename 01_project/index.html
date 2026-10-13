@@ -32,7 +32,7 @@
   }
     
   ">
-      Rock
+      Rock &#9994;
     </button>
     <button
     onclick="
@@ -58,13 +58,13 @@
       document.getElementById('result').textContent = 'Computer chose scissors. You lose!';
     }
     ">
-      Paper
+      Paper &#9995;
     </button>
     <button 
     onclick="
 
       playGame();           
-      if (computerChoice === 'paper') {
+      if (computerChoice === 'paper ') {
         score = score + 1;
         document.getElementById('score-text').textContent = 'Score: ' + score;
         console.log('Score: ' + score);
@@ -81,11 +81,11 @@
       else {
         score = score + 0;
         document.getElementById('score-text').textContent = 'Score: ' + score;
-        console.log('Score: ' + score);
+        console.log('Sc ore: ' + score);
         document.getElementById('result').textContent = 'Computer chose scissors. You tie!';
       }
       ">
-      Scissors
+      Scissors &#9996;
     </button>
     <p id = "result">
     </p>
