@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock paper scissors game</title>
+  </head>
+  <body>
+    <h1>Rock Paper Scissors</h1>
+    <button onclick="
+      playGame();
+      playerChoice('Rock' , 'paper', 'scissors');
+    ">
+      Rock &#9994;
+    </button>
+    <button
+    onclick="
+      playGame();
+      playerChoice('paper' , 'scissors', 'Rock');
+    ">
+      Paper &#9995;
+    </button>
+    <button 
+    onclick="
+      playGame();           
+      playerChoice('scissors' , 'Rock', 'paper');
+
+    ">
+
+      Scissors &#9996;
+    </button>
+    <p id = "result">
+    </p>
+    <p id="score-text">
+    </p>
+    
+    <script>
+      
+      let computerChoice = " ";
+      let score = 0;
+      
+      function playGame() {
+        const randomNumber = Math.random();
+        
+        if (randomNumber < 0.33) {
+          computerChoice = 'Rock';
+        }
+        else if (randomNumber < 0.66) {
+          computerChoice = 'paper'
+        }
+        else {
+          computerChoice = 'scissors'
+        }
+      }
+
+      function playerChoice(para1 , para2, para3) {
+  if (computerChoice === para1) {
+    score = score + 0;
+    document.getElementById('score-text').textContent = 'Score: ' + score;
+    console.log('Score: ' + score);
+    document.getElementById('result').textContent = `Computer chose  ${computerChoice}. You tie!`;
+    }
+  else if (computerChoice === para2) {
+    score = score - 1;
+    document.getElementById('score-text').textContent = 'Score: ' + score;
+    console.log('Score: ' + score);
+    document.getElementById('result').textContent = `Computer chose  ${computerChoice}. You lose!`;
+  }
+  else if (computerChoice === para3) {
+    score = score + 1;
+    document.getElementById('score-text').textContent = 'Score: ' + score;
+    console.log('Score: ' + score);
+    document.getElementById('result').textContent = `Computer chose  ${computerChoice}. You win!`;   
+
+  }
+} 
+           
+    
+      console.log(score)
+    </script>
+
+</html>
