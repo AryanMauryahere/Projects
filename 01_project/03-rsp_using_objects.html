@@ -24,9 +24,7 @@
     onclick="
       playGame();           
       playerChoice('scissors' , 'Rock', 'paper');
-
     ">
-
       Scissors &#9996;
     </button>
     <p id = "result">
@@ -73,7 +71,7 @@
           document.getElementById('score-text').textContent = 'Score: ' + score;
           console.log('Score: ' + score);
           result = 'win';
-            document.getElementById('result').textContent = `Computer chose  ${computerChoice}. ${result}!`;   
+          document.getElementById('result').textContent = `Computer chose  ${computerChoice}. ${result}!`;   
 
         }
       } 
