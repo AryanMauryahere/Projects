@@ -3,45 +3,61 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock paper scissors game</title>
+    <title>rock paper scissors game</title>
   </head>
   <body>
     <h1>Rock Paper Scissors</h1>
     <button onclick="
       playGame();
-      playerChoice('Rock' , 'paper', 'scissors');
-    ">
+      playerChoice('rock' , 'paper', 'scissors');
+      updateScore(result);
+      ">
       Rock &#9994;
     </button>
     <button
     onclick="
       playGame();
-      playerChoice('paper' , 'scissors', 'Rock');
-    ">
+      playerChoice('paper' , 'scissors', 'rock');
+      updateScore(result);
+      ">
       Paper &#9995;
     </button>
     <button 
     onclick="
       playGame();           
-      playerChoice('scissors' , 'Rock', 'paper');
+      playerChoice('scissors' , 'rock', 'paper');
+      updateScore(result); 
     ">
       Scissors &#9996;
+    </button>
+    <button onclick="
+      score = 0;
+      document.getElementById('score-text').textContent = 'Score: ' + score;
+      storedScore.wins = 0;
+      storedScore.losses = 0;
+      storedScore.ties = 0;
+      document.getElementById('score-update').textContent = `win : ${storedScore.wins} , lose : ${storedScore.losses} , tie : ${storedScore.ties}`;
+      ">
+      reset score
     </button>
     <p id = "result">
     </p>
     <p id="score-text">
+    </p>
+    <p id="score-update">
     </p>
     
     <script>
       
       let computerChoice = " ";
       let score = 0;
+      let result = " ";
       
       function playGame() {
         const randomNumber = Math.random();
         
         if (randomNumber < 0.33) {
-          computerChoice = 'Rock';
+          computerChoice = 'rock';
         }
         else if (randomNumber < 0.66) {
           computerChoice = 'paper'
@@ -74,10 +90,31 @@
           document.getElementById('result').textContent = `Computer chose  ${computerChoice}. ${result}!`;   
 
         }
-      } 
-           
-    
-      console.log(score)
+      }
+      
+      const storedScore = {
+        wins: 0,
+        losses: 0,
+        ties: 0
+      };
+
+      function updateScore(result) {
+        if(result === 'win'){
+          storedScore.wins = storedScore.wins + 1
+          document.getElementById("score-update").textContent = `win : ${storedScore.wins} , lose : ${storedScore.losses} , tie : ${storedScore.ties}`
+        }
+        else if(result === 'lose'){
+          storedScore.losses = storedScore.losses + 1
+          document.getElementById("score-update").textContent = `win : ${storedScore.wins} , lose : ${storedScore.losses} , tie : ${storedScore.ties}`
+        }
+        else if(result === 'tie'){
+          storedScore.ties = storedScore.ties + 1
+          document.getElementById("score-update").textContent = `win : ${storedScore.wins} , lose : ${storedScore.losses} , tie : ${storedScore.ties}`
+        }
+
+      }
+
+    console.log(score)
     </script>
 
 </html>
