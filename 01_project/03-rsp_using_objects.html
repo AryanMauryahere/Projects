@@ -58,19 +58,22 @@
           score = score + 0;
           document.getElementById('score-text').textContent = 'Score: ' + score;
           console.log('Score: ' + score);
-          document.getElementById('result').textContent = `Computer chose  ${computerChoice}. You tie!`;
+          result = 'tie';
+          document.getElementById('result').textContent = `Computer chose  ${computerChoice}. ${result}!`;
           }
         else if (computerChoice === para2) {
           score = score - 1;
           document.getElementById('score-text').textContent = 'Score: ' + score;
           console.log('Score: ' + score);
-          document.getElementById('result').textContent = `Computer chose  ${computerChoice}. You lose!`;
+          result = 'lose';
+          document.getElementById('result').textContent = `Computer chose  ${computerChoice}. ${result}!`;
         }
         else if (computerChoice === para3) {
           score = score + 1;
           document.getElementById('score-text').textContent = 'Score: ' + score;
           console.log('Score: ' + score);
-            document.getElementById('result').textContent = `Computer chose  ${computerChoice}. You win!`;   
+          result = 'win';
+            document.getElementById('result').textContent = `Computer chose  ${computerChoice}. ${result}!`;   
 
         }
       } 
