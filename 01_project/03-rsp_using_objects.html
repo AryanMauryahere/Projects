@@ -54,26 +54,26 @@
       }
 
       function playerChoice(para1 , para2, para3) {
-  if (computerChoice === para1) {
-    score = score + 0;
-    document.getElementById('score-text').textContent = 'Score: ' + score;
-    console.log('Score: ' + score);
-    document.getElementById('result').textContent = `Computer chose  ${computerChoice}. You tie!`;
-    }
-  else if (computerChoice === para2) {
-    score = score - 1;
-    document.getElementById('score-text').textContent = 'Score: ' + score;
-    console.log('Score: ' + score);
-    document.getElementById('result').textContent = `Computer chose  ${computerChoice}. You lose!`;
-  }
-  else if (computerChoice === para3) {
-    score = score + 1;
-    document.getElementById('score-text').textContent = 'Score: ' + score;
-    console.log('Score: ' + score);
-    document.getElementById('result').textContent = `Computer chose  ${computerChoice}. You win!`;   
+        if (computerChoice === para1) {
+          score = score + 0;
+          document.getElementById('score-text').textContent = 'Score: ' + score;
+          console.log('Score: ' + score);
+          document.getElementById('result').textContent = `Computer chose  ${computerChoice}. You tie!`;
+          }
+        else if (computerChoice === para2) {
+          score = score - 1;
+          document.getElementById('score-text').textContent = 'Score: ' + score;
+          console.log('Score: ' + score);
+          document.getElementById('result').textContent = `Computer chose  ${computerChoice}. You lose!`;
+        }
+        else if (computerChoice === para3) {
+          score = score + 1;
+          document.getElementById('score-text').textContent = 'Score: ' + score;
+          console.log('Score: ' + score);
+            document.getElementById('result').textContent = `Computer chose  ${computerChoice}. You win!`;   
 
-  }
-} 
+        }
+      } 
            
     
       console.log(score)
