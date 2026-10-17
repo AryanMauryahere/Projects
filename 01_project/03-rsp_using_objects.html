@@ -31,6 +31,7 @@
       Scissors &#9996;
     </button>
     <button onclick="
+      localStorage.removeItem('storedScore');
       score = 0;
       document.getElementById('score-text').textContent = 'Score: ' + score;
       storedScore.wins = 0;
@@ -54,6 +55,19 @@
       let result = " ";
       
       // console.log(localStorage.getItem('neha'));
+      
+      let storedScore = JSON.parse(localStorage.getItem('storedScore')) ||{
+        wins: 0,
+        losses: 0,
+        ties: 0
+      };
+      // if(storedScore === null){
+      //   storedScore = {
+      //     wins: 0,
+      //     losses: 0,
+      //     ties: 0
+      //   }
+      // }
       
       function playGame() {
         const randomNumber = Math.random();
@@ -95,7 +109,6 @@
       }
       
       
-      const storedScore = JSON.parse(localStorage.getItem('storedScore'))
       
       
       function updateScore(result) {
