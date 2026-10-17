@@ -53,32 +53,7 @@
       let score = 0;
       let result = " ";
       
-      // console.log(localStorage.getItem('neha'));
-      
-      
-      const storedScore = {
-        wins: 0,
-        losses: 0,
-        ties: 0
-      }  
-      console.log(localStorage.getItem('storedScore'));
-      
-      
-      function updateScore(result) {
-        if(result === 'win'){
-          storedScore.wins = storedScore.wins + 1
-          document.getElementById("score-update").textContent = `win : ${storedScore.wins} , lose : ${storedScore.losses} , tie : ${storedScore.ties}`
-        }
-        else if(result === 'lose'){
-          storedScore.losses = storedScore.losses + 1
-          document.getElementById("score-update").textContent = `win : ${storedScore.wins} , lose : ${storedScore.losses} , tie : ${storedScore.ties}`
-        }
-        else if(result === 'tie'){
-          storedScore.ties = storedScore.ties + 1
-          document.getElementById("score-update").textContent = `win : ${storedScore.wins} , lose : ${storedScore.losses} , tie : ${storedScore.ties}`
-        }
-        
-      }
+      console.log(localStorage.getItem('neha'));
       
       function playGame() {
         const randomNumber = Math.random();
@@ -117,6 +92,31 @@
           document.getElementById('result').textContent = `Computer chose  ${computerChoice}. ${result}!`;   
           
         }
+      }
+      
+      
+      const storedScore = {
+        wins: 0,
+        losses: 0,
+        ties: 0
+      }  
+      
+      console.log(localStorage.getItem('storedScore'));
+      
+      function updateScore(result) {
+        if(result === 'win'){
+          storedScore.wins = storedScore.wins + 1
+          document.getElementById("score-update").textContent = `win : ${storedScore.wins} , lose : ${storedScore.losses} , tie : ${storedScore.ties}`
+        }
+        else if(result === 'lose'){
+          storedScore.losses = storedScore.losses + 1
+          document.getElementById("score-update").textContent = `win : ${storedScore.wins} , lose : ${storedScore.losses} , tie : ${storedScore.ties}`
+        }
+        else if(result === 'tie'){
+          storedScore.ties = storedScore.ties + 1
+          document.getElementById("score-update").textContent = `win : ${storedScore.wins} , lose : ${storedScore.losses} , tie : ${storedScore.ties}`
+        }
+        
       }
       
       
