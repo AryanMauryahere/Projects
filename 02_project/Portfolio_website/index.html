@@ -295,6 +295,22 @@
       html{scroll-behavior:auto}
       *{animation:none!important;transition:none!important}
     }
+
+    /* ===== PROJECTS (data comes from projects.js) ===== */
+    .projects{background:linear-gradient(#d9ccff,#efe8ff)}
+    .proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:22px;margin-top:22px}
+    .proj-card{border:5px solid var(--navy);background:var(--white);padding:16px;box-shadow:8px 8px 0 rgba(16,35,63,.8);display:flex;flex-direction:column;gap:10px;transition:transform .15s}
+    .proj-card:hover{transform:translate(-3px,-3px)}
+    .proj-card h3{margin:0;font-size:20px;text-transform:uppercase}
+    .proj-card p{margin:0;line-height:1.55;font-size:14px}
+    .proj-status{display:inline-block;align-self:flex-start;padding:4px 8px;border:3px solid var(--navy);font-size:12px;font-weight:900;text-transform:uppercase}
+    .proj-status.live{background:var(--green)}
+    .proj-status.in-progress{background:var(--yellow)}
+    .proj-status.completed{background:var(--sky)}
+    .proj-links{margin-top:auto;display:flex;gap:10px;flex-wrap:wrap;padding-top:6px}
+    .proj-links a{text-decoration:none;font-weight:900;font-size:13px;padding:8px 10px;border:4px solid var(--navy);background:var(--yellow);box-shadow:4px 4px 0 rgba(16,35,63,.3)}
+    .proj-links a:hover{background:var(--navy);color:var(--white)}
+    .proj-empty{padding:18px;border:4px dashed var(--navy);background:var(--white);font-weight:900}
   </style>
 </head>
 <body>
@@ -427,8 +443,19 @@
       </div>
     </section>
 
+    <section class="section projects" id="projects">
+      <div class="scene-label">LEVEL 4 // PROJECTS</div>
+      <div class="section-inner">
+        <div class="block-card">
+          <h2>Project Arcade</h2>
+          <p class="small">Things I have built and am building. Add or edit projects in <b>projects.js</b>.</p>
+          <div class="proj-grid" id="proj-grid"></div>
+        </div>
+      </div>
+    </section>
+
     <section class="section soft" id="details">
-      <div class="scene-label">LEVEL 4 // PERSONAL DETAILS</div>
+      <div class="scene-label">LEVEL 5 // PERSONAL DETAILS</div>
       <div class="section-inner grid-2">
         <div class="block-card">
           <h2>Player Details</h2>
@@ -482,6 +509,7 @@
     Built for Aryan Maurya • Interactive resume-inspired portfolio • © <span id="year"></span>
   </footer>
 
+  <script src="projects.js"></script>
   <script>
     const progress = document.getElementById("progress");
     const runner = document.getElementById("runner");
@@ -510,6 +538,46 @@
     window.addEventListener("resize", updateScene);
     document.getElementById("year").textContent = new Date().getFullYear();
     updateScene();
+
+    // ===== Render projects from projects.js =====
+    (function renderProjects(){
+      const grid = document.getElementById("proj-grid");
+      const list = Array.isArray(window.PROJECTS) ? window.PROJECTS : [];
+      const labels = {"live":"Live","in-progress":"In progress","completed":"Completed"};
+      const safeUrl = u => /^https?:\/\//i.test(u || "") ? u : "";
+      if(!list.length){
+        grid.innerHTML = '<div class="proj-empty">NEW PROJECTS LOADING... add some in projects.js</div>';
+        return;
+      }
+      list.forEach(p => {
+        const card = document.createElement("article");
+        card.className = "proj-card";
+        const status = labels[p.status] ? p.status : "";
+        if(status){
+          const s = document.createElement("span");
+          s.className = "proj-status " + status;
+          s.textContent = labels[status];
+          card.appendChild(s);
+        }
+        const h = document.createElement("h3"); h.textContent = p.title || "Untitled project"; card.appendChild(h);
+        if(p.description){ const d = document.createElement("p"); d.textContent = p.description; card.appendChild(d); }
+        if(Array.isArray(p.tags) && p.tags.length){
+          const t = document.createElement("div");
+          p.tags.forEach(x => { const s = document.createElement("span"); s.className = "tag"; s.textContent = x; t.appendChild(s); });
+          card.appendChild(t);
+        }
+        const links = document.createElement("div"); links.className = "proj-links";
+        [["github","GitHub"],["demo","Live demo"]].forEach(([k,label]) => {
+          const url = safeUrl(p[k]);
+          if(!url) return;
+          const a = document.createElement("a");
+          a.href = url; a.target = "_blank"; a.rel = "noopener noreferrer"; a.textContent = label + " ↗";
+          links.appendChild(a);
+        });
+        if(links.children.length) card.appendChild(links);
+        grid.appendChild(card);
+      });
+    })();
   </script>
 </body>
 </html>
