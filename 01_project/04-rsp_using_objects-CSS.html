@@ -51,6 +51,8 @@
     " class="emoji-button">
       <img src="rsp-emojis/scissors-emoji.png" alt="Scissors" class="emoji">
     </button>
+    <p id = "final-result">
+    </p>
     <p id = "result">
     </p>
     <p id="score-text">
@@ -60,11 +62,11 @@
     <button onclick="
       localStorage.removeItem('storedScore');
       score = 0;
-      document.getElementById('score-text').textContent = 'Score: ' + score;
+      document.getElementById('score-text').innerHTML = 'Score: ' + score;
       storedScore.wins = 0;
       storedScore.losses = 0;
       storedScore.ties = 0;
-      document.getElementById('score-update').textContent = `win : ${storedScore.wins} , lose : ${storedScore.losses} , tie : ${storedScore.ties}`;
+      document.getElementById('score-update').innerHTML = `win : ${storedScore.wins} , lose : ${storedScore.losses} , tie : ${storedScore.ties}`;
       ">
       reset score
     </button>
@@ -107,24 +109,27 @@
       function playerChoice(para1 , para2, para3) {
         if (computerChoice === para1) {
           score = score + 0;
-          document.getElementById('score-text').textContent = 'Score: ' + score;
+          document.getElementById('score-text').innerHTML = 'Score: ' + score;
           console.log('Score: ' + score);
           result = 'tie';
-          document.getElementById('result').textContent = `Computer chose  ${computerChoice}. ${result}!`;
+          document.getElementById('final-result').innerHTML = result;
+          document.getElementById('result').innerHTML = `Computer: <img src="rsp-emojis/${computerChoice}-emoji.png" alt="${computerChoice}" class="emoji">. You: <img src="rsp-emojis/${para1}-emoji.png" alt="${para1}" class="emoji">.`;
         }
         else if (computerChoice === para2) {
           score = score - 1;
-          document.getElementById('score-text').textContent = 'Score: ' + score;
+          document.getElementById('score-text').innerHTML = 'Score: ' + score;
           console.log('Score: ' + score);
           result = 'lose';
-          document.getElementById('result').textContent = `Computer chose  ${computerChoice}. ${result}!`;
+          document.getElementById('final-result').innerHTML = result;
+          document.getElementById('result').innerHTML = `Computer: <img src="rsp-emojis/${computerChoice}-emoji.png" alt="${computerChoice}" class="emoji">. You: <img src="rsp-emojis/${para2}-emoji.png" alt="${para2}" class="emoji">.`;
         }
         else if (computerChoice === para3) {
           score = score + 1;
-          document.getElementById('score-text').textContent = 'Score: ' + score;
+          document.getElementById('score-text').innerHTML = 'Score: ' + score;
           console.log('Score: ' + score);
           result = 'win';
-          document.getElementById('result').textContent = `Computer chose  ${computerChoice}. ${result}!`;   
+          document.getElementById('final-result').innerHTML = result;
+          document.getElementById('result').innerHTML = `Computer: <img src="rsp-emojis/${computerChoice}-emoji.png" alt="${computerChoice}" class="emoji">. You: <img src="rsp-emojis/${para3}-emoji.png" alt="${para3}" class="emoji">. ${result}!`;   
           
         }
       }
@@ -135,15 +140,15 @@
       function updateScore(result) {
         if(result === 'win'){
           storedScore.wins = storedScore.wins + 1
-          document.getElementById("score-update").textContent = `win : ${storedScore.wins} , lose : ${storedScore.losses} , tie : ${storedScore.ties}`
+          document.getElementById("score-update").innerHTML = `win : ${storedScore.wins} , lose : ${storedScore.losses} , tie : ${storedScore.ties}`
         }
         else if(result === 'lose'){
           storedScore.losses = storedScore.losses + 1
-          document.getElementById("score-update").textContent = `win : ${storedScore.wins} , lose : ${storedScore.losses} , tie : ${storedScore.ties}`
+          document.getElementById("score-update").innerHTML = `win : ${storedScore.wins} , lose : ${storedScore.losses} , tie : ${storedScore.ties}`
         }
         else if(result === 'tie'){
           storedScore.ties = storedScore.ties + 1
-          document.getElementById("score-update").textContent = `win : ${storedScore.wins} , lose : ${storedScore.losses} , tie : ${storedScore.ties}`
+          document.getElementById("score-update").innerHTML = `win : ${storedScore.wins} , lose : ${storedScore.losses} , tie : ${storedScore.ties}`
         }
         
         localStorage.setItem('storedScore', JSON.stringify(storedScore));
